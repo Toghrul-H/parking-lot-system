@@ -1,0 +1,37 @@
+@startuml
+package vehicle {
+class Car {
+- licensePlate : String
+- spotOccupation : Size
+- preferredFloor : int
+- ticketId : String
+}
+enum Size { SMALL; LARGE }
+}
+
+
+package parking.facility {
+class Gate {
+- cars : List<Car>
+- parkingLot : ParkingLot
+}
+class Space {
+- floorNumber : int
+- spaceNumber : int
+- occupyingCar : Car
+}
+}
+
+
+package parking {
+class ParkingLot {
+- floorPlan : Space[][]
+}
+}
+
+
+Car --> Size
+Gate --> ParkingLot
+Space --> Car
+ParkingLot --> Space
+@enduml
